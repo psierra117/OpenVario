@@ -9,7 +9,8 @@
 	url = https://git.openembedded.org/meta-openembedded.git
 [submodule "meta-raspberrypi"]
 	path = meta-raspberrypi
-	url = https://git.yoctoproject.org/meta-raspberrypi/?h=scarthgap
+	url = https://git.yoctoproject.org/meta-raspberrypi
+    branch = scarthgap
 [submodule "meta-sunxi"]
 	path = meta-sunxi
 	url = https://github.com/linux-sunxi/meta-sunxi.git
@@ -18,7 +19,8 @@
 	url = https://github.com/rauc/meta-rauc.git
 [submodule "meta-openvario"]
 	path = meta-openvario
-	url = https://github.com/OpenVario/meta-openvario.git
+	url = https://github.com/psierra117/meta-openvario/
+    branch = scarthgap_Bleeding_Edge
 [submodule "openembedded-core"]
 	path = openembedded-core
 	url = https://git.openembedded.org/openembedded-core
