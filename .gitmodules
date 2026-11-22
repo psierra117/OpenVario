@@ -1,24 +1,32 @@
 [submodule "bitbake"]
 	path = bitbake
 	url = https://git.openembedded.org/bitbake
+	branch = 2.18
 [submodule "meta-arm"]
 	path = meta-arm
 	url = https://git.yoctoproject.org/meta-arm
+	branch = wrynose
 [submodule "meta-openembedded"]
 	path = meta-openembedded
 	url = https://git.openembedded.org/meta-openembedded.git
+	branch = wrynose
 [submodule "meta-raspberrypi"]
 	path = meta-raspberrypi
 	url = https://git.yoctoproject.org/meta-raspberrypi
+	branch = wrynose
 [submodule "meta-sunxi"]
 	path = meta-sunxi
 	url = https://github.com/linux-sunxi/meta-sunxi.git
+	branch = master
 [submodule "meta-rauc"]
 	path = meta-rauc
 	url = https://github.com/rauc/meta-rauc.git
+	branch = wrynose
 [submodule "meta-openvario"]
 	path = meta-openvario
-	url = https://github.com/OpenVario/meta-openvario.git
+	url = https://github.com/psierra117/meta-openvario.git
+	branch = wrynose
 [submodule "openembedded-core"]
 	path = openembedded-core
 	url = https://git.openembedded.org/openembedded-core
+	branch = wrynose

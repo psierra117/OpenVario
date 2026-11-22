@@ -1,14 +1,22 @@
 # OpenVario Software Image
 
+![Yocto](https://img.shields.io/badge/Yocto-6.0%20Wrynose%20(LTS)-0a66c2)
+![Linux](https://img.shields.io/badge/Linux-6.18%20LTS-f0a30a)
+![XCSoar](https://img.shields.io/badge/XCSoar-7.46.1-2e8b57)
+![OpenSoar](https://img.shields.io/badge/OpenSoar-7.46.26.1-2e8b57)
+![OpenVario](https://img.shields.io/badge/OpenVario-6.0-6f42c1)
+
 This is repository to build the Software Image for Openvario Flight Computer
+
+The `wrynose` branch builds OpenVario 6.0 on Yocto Project 6.0 "Wrynose" (LTS) with Linux 6.18 LTS.
+The OpenVario layer itself lives in [psierra117/meta-openvario](https://github.com/psierra117/meta-openvario/tree/wrynose),
+see its [CHANGELOG](https://github.com/psierra117/meta-openvario/blob/wrynose/CHANGELOG.md) for all changes.
 
 ## Issues and discussion
 
 As this repository just represents the build system of the image, the issue reporting and discussions related to the **meta-openvario** layer shall still take in the correspoding repo.
 
-[Issues](https://github.com/Openvario/meta-openvario/issues)
-
-[Dicussions](https://github.com/Openvario/meta-openvario/discussions)
+[Issues](https://github.com/psierra117/meta-openvario/issues)
 
 ## How to build an image
 
@@ -20,7 +28,7 @@ As this repository just represents the build system of the image, the issue repo
 ### Fetching sources
 
 ```
-git clone --recurse-submodules https://github.com/Openvario/OpenVario.git
+git clone --recurse-submodules -b wrynose https://github.com/psierra117/OpenVario.git
 cd OpenVario
 ```
 
@@ -40,7 +48,7 @@ source openembedded-core/oe-init-build-env .
 ### Setting the machine
 
 ```
-export MACHINE=ov-cb2-ch70
+export MACHINE=ov-cm4-ch70
 ```
 
 ### Available machines for the OpenVario 
@@ -53,6 +61,7 @@ export MACHINE=ov-cb2-ch70
     ov-cb2-ch57
     ov-cb2-ch70
     ov-cb2-pq70
+    ov-cb2-hdmi
   
     Cubieboard 2 and the adapter board DS2
     ======================================
@@ -61,10 +70,11 @@ export MACHINE=ov-cb2-ch70
     ov-cb2-ch57s
     ov-cb2-ch70s
 
-    Raspberry Pi CM4 (testing status)
-    =================================
+    Raspberry Pi CM4
+    ================
     
     ov-cm4-ch57
+    ov-cm4-ch70 (tested on hardware)
     ov-cm4-pq70
 
     ov-rpi4 (developemt only)
@@ -76,12 +86,20 @@ export MACHINE=ov-cb2-ch70
 bitbake openvario-image
 ```
 
-### Build errors, development branches and upstream dependency changes
-We are currently working on updating the commit references used for the stable OpenVario releases to ensure reproducible builds and long‑term maintainability.
+The images are written to `tmp/deploy/images/<machine>/`, e.g. `OV-6.0.0-CM4-CH70.wic.bz2`.
 
-For development purposes, please use the `scarthgap` branch of meta-openvario, as it contains the most up‑to‑date fixes and improvements.
+### Kernel
+
+Linux 6.18 LTS is the default kernel. The previous 6.12 kernel can still be selected in `conf/local.conf`:
+
+```
+PREFERRED_VERSION_linux-ov-rpi = "6.12%"
+PREFERRED_VERSION_linux-openvario = "6.12%"
+```
+
+### Build errors, development branches and upstream dependency changes
+All layers are pinned as submodules to revisions that are known to build together with the `wrynose` branch of meta-openvario.
 
 Please note that some parts of the build — especially the testing image — track upstream development branches. These components may introduce new dependencies, change existing ones, or cause incompatibilities at any time, which can lead to unexpected build failures.
 
-If the build fails, try checking out the `scarthgap` branch in meta-openvario, as it may resolve the issue.
-If the problem persists, please open an issue in [Openvario/meta-openvario](https://github.com/Openvario/meta-openvario/issues) so we can investigate it.
+If the problem persists, please open an issue in [psierra117/meta-openvario](https://github.com/psierra117/meta-openvario/issues) so we can investigate it.
